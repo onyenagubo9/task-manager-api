@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected!'))
   .catch((err) => {
@@ -14,6 +15,11 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
+app.get('/', (req, res) => res.send('Backend server is running'));
+
+app.get('/test-server', (req, res) => res.send('Test route from server.js'));
+
+// Import routes
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
