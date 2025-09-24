@@ -70,4 +70,8 @@ router.delete('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+router.get('/text', (req, res) => {
+  res.send('task route working!');
+});
+
 module.exports = router;
