@@ -6,6 +6,10 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
+// ✅ Enable CORS before defining routes
+app.use(cors({
+  origin: "*",   // allow all domains (you can restrict later)
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
